@@ -1,7 +1,8 @@
 #include <iostream>
+
 using namespace std;
 
-//node class representing a single node in the linked list
+// node class representing a single node in the linked list
 class Node {
 public:
     int data;
@@ -12,34 +13,36 @@ public:
     }
 };
 
-//stack class
-class stack {
+// stack class
+class Stack {
 private:
-    Node* top;
+    Node* top; //pointer to the top node of the stack
 
 public:
     Stack() {
-        top = NULL;
+        top = NULL; //initialize the stack with a null top pointer
     }
 
+    //push operation: insert an element onto the top of the stack
     int push(int value) {
-        Node* newNode = new Node();
-        newNode->data = value;
-        newNode->next = top;
+        Node* newNode = new Node(); // 1.Allocate memory for the new node
+        newNode->data = value; // 2.assign value
+        newNode->next = top; // 3.set the next pointer of the new node to the current top node
+        top = newNode; // 4.update the top pointer to the new node
         cout << "Push value: " << value << endl;
         return value;
-
     }
 
-     void pop() {
-       if (isEmpty()) {
+    // pop operation: Remove the topmost element from the stack
+    void pop() {
+        if (isEmpty()) {
             cout << "Stack is empty." << endl;
-        } 
+        }
         cout << "Popped value: " << top->data << endl;
-        top = top->next;
-
+        top = top->next; // update the top pointer to the next node
     }
 
+    // peek/top operation: retrieve the value of the topmost element without removing it
     void peek() {
         if (top == NULL) {
             cout << "List is empty." << endl;
@@ -51,17 +54,17 @@ public:
                 current = current->next;
             }
             cout << endl;
+        } //Return the value of the top
     }
 
+    // isEmpty operation: check if the stack is empty
     bool isEmpty() {
-        return top == NULL;
-
+        return top == NULL; //return true if the top pointer is NULL, indicating an empty stack
     }
-
 };
 
 int main() {
-     Stack stack;
+    Stack stack;
 
     int choice = 0;
     int value;
@@ -102,11 +105,10 @@ int main() {
         default:
             cout << "Invalid choice. Try again." << endl;
             break;
-             }
+        }
 
         cout << endl;
     }
 
     return 0;
-
 }
