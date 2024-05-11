@@ -31,4 +31,8 @@ public:
 
     }
 
+     void pop() {
+
+    }
+
 };
